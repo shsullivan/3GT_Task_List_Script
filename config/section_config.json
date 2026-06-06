@@ -1,0 +1,79 @@
+[
+  {
+    "owner": "Night Shift Line Tech",
+    "header": "NIGHT SHIFT LINE TECHS",
+    "notes": [
+      "NOTES: TASKS TO BE COMPLETED AND SIGNED OFF IN CMMS BY 6:00AM",
+      "STERI AND SHM NEED TO BE EMPTY BY 5:00AM!!",
+      "LEAVE SHM IN READY STATE",
+      "FC/BC IMM BYPASS @ 3:00AM",
+      "PM TEAM WILL PULL/REPLACE ALL RTD/SENSORS!!"
+    ],
+    "manual_tasks": [
+      ["", "Remove pallets from line", "Night Shift Line Tech", "LINE"],
+      ["", "Remove pucks from line", "Night Shift Line Tech", "LINE"],
+      ["", "Get ALL Ladders for the top of TAM Machine & SHM", "Night Shift Line Tech", "LINE"],
+      ["", "Lower Demold Head", "Night Shift Line Tech", "LINE"],
+      ["", "Open Sterilizer Doors", "Night Shift Line Tech", "LINE"]
+    ],
+    "checks": []
+  },
+  {
+    "owner": "PM Team Tech",
+    "header": "PM TEAM",
+    "notes": ["STANDARD TASKS COMPLETED BY: 11:00 AM"
+    ],
+    "manual_tasks": [],
+    "checks": [
+      ["Check", "ALL RTDS AND 0-2s ARE REINSTALLED AND SECURED", "PM Team Tech", "Process Confirmation"]
+    ]
+  },
+  {
+    "owner": ["Day Shift Line Tech", "VSPL", "SME"],
+    "header": "DAY SHIFT LINE TECH / VSPL / SME",
+    "notes": ["ALL TASKS COMPLETED AND SIGNED OFF IN CMMS BY 12:00 PM"],
+    "manual_tasks": [],
+    "checks": [
+      ["Check", "VERIFY HEAT SEAL RTD/THERMOCOUPLE TEMPERATURES ARE MET", "Day Shift Line Tech", "Process Confirmation"],
+      ["Check", "VERIFY HEAT SEAL CABLING IS ROUTED CORRECTLY", "Day Shift Line Tech", "Process Confirmation"],
+      ["Check", "INSPECT ALL ZONES FOR TUBING OR CABLING RUBBING AGAINST ROBOTS OR MOVING PARTS", "Day Shift Line Tech",
+        "Process Confirmation"]
+    ]
+  },
+  {
+    "owner": ["PM Support", "McKendrees", "Miller Elec.", "Calibrations", "Reliability Tech"],
+    "header": "PM SUPPORT / CONTRACTORS / CALIBRATIONS",
+    "notes": [
+      "PM SUPPORT TASKS COMPLETED AND SIGNED OFF BY: 8:00 AM",
+      "CONTRACTOR TASKS COMPLETED BY 11:00 AM"
+    ],
+    "manual_tasks": [],
+    "checks": [
+      ["Check", "VERIFY DEMOLD CABLES ARE PROPERLY ROUTED AND COOLING FITTINGS ARE SECURED", "PM Support",
+        "Process Confirmation"]
+    ]
+  },
+  {
+    "owner": "IMM PM Tech",
+    "header": "IMM PM Technicians",
+    "notes": [
+      "FC/BC IMM TASKS COMPLETED BY 12:00 PM"
+    ],
+    "manual_tasks": [],
+    "checks": [
+      ["Check", "IMM TOOLING AND MATCHING PAPERWORK VERIFIED", "IMM PM Tech", "Process Confirmation"],
+      ["Check", "VERIFY THAT NO FITTINGS ARE SECURED (NO LEAKS!)", "IMM PM Tech", "Process Confirmation"]
+    ]
+  },
+  {
+    "owner": "Cleaning Crew",
+    "header": "CLEANING CREW",
+    "notes": [
+      "TASKS COMPLETED BY 10:00 AM"
+    ],
+    "manual_tasks": [],
+    "checks": [
+      ["Check", "POST CLEANING LINE WALK COMPLETED", "VSML/CC Supervisor", "Process Confirmation"]
+    ]
+  }
+]
