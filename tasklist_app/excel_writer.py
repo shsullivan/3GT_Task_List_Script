@@ -2,6 +2,7 @@
 # Excel Writing / Formatting (openpyxl)
 #-----------------------------------------------------
 
+from datetime import datetime
 import logging
 from pathlib import Path
 import openpyxl
@@ -56,9 +57,9 @@ def apply_group_border_range(
                 bottom=THIN_SIDE if row == end_row else None
             )
 
-def write_title_row(ws, row_num: int) -> int:
-    ws.cell(row=row_num, column=2, value="TAM - 30 - 48 Week PM")
-    ws.cell(row=row_num, column=3, value=pd.Timestamp.today().strftime("%B %d, %Y"))
+def write_title_row(ws, row_num: int, title: str, display_date: str) -> int:
+    ws.cell(row=row_num, column=2, value=title)
+    ws.cell(row=row_num, column=3, value=display_date)
 
     for col in range(1, 5):
         cell = ws.cell(row=row_num, column=col)
@@ -170,7 +171,14 @@ def set_column_widths(ws) -> None:
     for col_letter, width in COLUMN_WIDTHS.items():
         ws.column_dimensions[col_letter].width = width
 
-def write_workbook(df: pd.DataFrame, section_config: list[dict], output_path: Path) -> None:
+def write_workbook(
+        df: pd.DataFrame,
+        section_config: list[dict],
+        output_path: Path,
+        title: str,
+        display_date: str
+    ) -> None:
+
     """Write sectioned Task List workbook to *output_path*."""
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -178,7 +186,7 @@ def write_workbook(df: pd.DataFrame, section_config: list[dict], output_path: Pa
 
     row_num = 1
 
-    row_num = write_title_row(ws, row_num)
+    row_num = write_title_row(ws, row_num, title, display_date)
 
     for section in section_config:
         row_num = write_section(ws, row_num, section, df)

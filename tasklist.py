@@ -11,6 +11,8 @@ from tasklist_app.validate import (
     warn_for_unwritten_tasks
 )
 from tasklist_app.excel_writer import write_workbook
+from tasklist_app.cli import collect_run_inputs
+
 #-----------------------------------------------------
 # Logger Setup
 #-----------------------------------------------------
@@ -27,7 +29,8 @@ def get_output_filename() -> str:
         name = input("Enter new task list filename: ").strip()
         if name.endswith(".xlsx"):
             return name
-        print("Filename must end with .xlsx")
+        name = name + ".xlsx"
+        return name
 
 def main() -> None:
     path = WEEKLY_EXPORTS
@@ -38,6 +41,8 @@ def main() -> None:
     section_config = load_section_config(SECTION_CONFIG_PATH)
     validate_section_config(section_config)
 
+    run_inputs = collect_run_inputs()
+
     df = load_csvs(path)
     df = assign_owners(df, task_dict)
     df = sort_by_owner(df, CUSTOM_ORDER)
@@ -45,8 +50,13 @@ def main() -> None:
     warn_for_duplicate_task_ids(df)
     warn_for_unwritten_tasks(df, section_config)
 
-    output_filename = get_output_filename()
-    write_workbook(df, section_config,path / output_filename)
+    write_workbook(
+        df,
+        section_config,
+        path / run_inputs["output_filename"],
+        run_inputs["title"],
+        run_inputs["display_date"],
+    )
 
 
 if __name__ == "__main__":
