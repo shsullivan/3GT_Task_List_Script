@@ -4,13 +4,19 @@
 
 from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
 from pathlib import Path
+import sys
 from tasklist_app.models import TaskOwner
+
+def get_project_root() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).parent
+    return Path(__file__).resolve().parent.parent
 
 # Columns to keep from raw data
 KEEP_COLUMNS = ["Task ID", "Task Name", "Assigned To", "Cell"]
 
 # Frequently used file paths
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = get_project_root()
 CONFIG_DIR = PROJECT_ROOT / "config"
 TASK_DICT_PATH = CONFIG_DIR / "task_owners.csv"
 SECTION_CONFIG_PATH = CONFIG_DIR / "section_config.json"
